@@ -93,7 +93,8 @@ int TWIG_INSTANCE_OF_USERLAND(zval *object, char *interface TSRMLS_DC)
 zval *TWIG_GET_ARRAYOBJECT_ELEMENT(zval *object, zval *offset TSRMLS_DC)
 {
     zend_class_entry *ce = Z_OBJCE_P(object);
-    zval *retval, **retval_ptr = NULL;
+    zval *retval;
+    zval **retval_ptr = NULL;
 
 	if (Z_TYPE_P(object) == IS_OBJECT) {
 		if (zend_symtable_find(HASH_OF(object), Z_STRVAL_P(offset), Z_STRLEN_P(offset) + 1, (void **) &retval_ptr) == FAILURE) {
