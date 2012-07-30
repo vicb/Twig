@@ -106,6 +106,9 @@ zval *TWIG_GET_ARRAYOBJECT_ELEMENT(zval *object, zval *offset TSRMLS_DC)
 		}
 
         if (!retval) {
+        	if (zend_symtable_find(HASH_OF(object), Z_STRVAL_P(offset), Z_STRLEN_P(offset) + 1, (void **) &retval_ptr) == SUCCESS) {
+        		retval = *retval_ptr;
+        	}
             if (!EG(exception)) {
                 zend_error(E_ERROR, "Undefined offset for object of type %s used as array", ce->name);
             }
