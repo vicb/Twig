@@ -1,5 +1,5 @@
 --TEST--
-Twig supports method calls
+Twig supports array accesses
 --TEMPLATE--
 {{ items.foo }}
 {{ items['foo'] }}
